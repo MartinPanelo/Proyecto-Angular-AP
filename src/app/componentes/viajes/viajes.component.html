@@ -1,0 +1,132 @@
+<div class="contenedor">
+  <div class="titulo">
+<h1>Gestion de viajes</h1>
+</div>
+<div class="agregarbtn">
+<button data-bs-toggle="modal" (click)="tipodemodal(-1)" data-bs-target="#exampleModal" type="button" class="btn btn-success">Agregar</button>
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Lugar de salida</th>
+          <th scope="col">Lugar de llegada</th>
+          <th scope="col">Fecha de salida</th>
+          <th scope="col">Fecha de llegada</th>
+          <th scope="col" colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viaje of viajes; let i = index">
+          <th scope="row">{{viaje.id}}</th>
+          <td>{{viaje.lugarSalida}}</td>
+          <td>{{viaje.lugarDestino}}</td>
+          <td>{{viaje.fechaSalida}}</td>
+          <td>{{viaje.fechaLlegada}}</td>
+          <td><button data-bs-toggle="modal" (click)="tipodemodal(i)" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Editar</button></td>
+          <td><p (mouseenter)="onMouseEnter(viaje.id!)" (mouseleave)="onMouseLeave()"   class="btn btn-danger">Detalles</p></td>
+        </tr>       
+      </tbody>
+  </table>   
+    
+  
+  
+  <div id="divinfo" >
+    <div class="info">
+    <p>Lugar de salida: {{detalleviaje.lugarSalida}}</p>
+    <p>Lugar de destino: {{detalleviaje.lugarDestino}}</p>  
+    <p>Fecha de salida: {{detalleviaje.fechaSalida}}</p>
+   <p>Fecha de llegada: {{detalleviaje.fechaLlegada}}</p> 
+    <p>Matricula de Colectivo: {{detalleviaje.idColectivo}}</p> 
+
+    <p>Id de los pasajeros:</p>
+    <ul>
+      <li *ngFor="let pasajero of detalleviaje.personaId">{{ pasajero }}</li>
+    </ul>
+  </div>
+  </div>
+
+<div class="contenedor">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{titulo}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">        
+          <form>
+            <div class="mb-3">
+              <label for="lugarSalida" class="col-form-label">Lugar de salida:</label>
+              <input  type="text" class="form-control" id="lugarSalida" [(ngModel)]="nuevoviaje.lugarSalida" name="lugarSalida" required>
+            </div>
+           <div class="mb-3">
+              <label for="lugarDestino" class="col-form-label">Lugar de destino:</label>
+              <input  type="text" class="form-control" id="lugarDestino" [(ngModel)]="nuevoviaje.lugarDestino" name="lugarDestino" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaSalida" class="col-form-label">Fecha de salida:</label>
+                <input  type="date" class="form-control" id="fechaSalida" [(ngModel)]="nuevoviaje.fechaSalida" name="fechaSalida" required>
+              </div>
+              <div class="mb-3">
+                <label for="fechaLlegada" class="col-form-label">Fecha de llegada:</label>
+                <input  type="date" class="form-control" id="fechaLlegada" [(ngModel)]="nuevoviaje.fechaLlegada" name="fechaLlegada" required>
+              </div>
+              <div *ngIf="formmodal" class="mb-3">
+                <label class="col-form-label">Listado de pasajeros:</label>
+                
+                <table  class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Apellido</th>
+                          <th scope="col">Edad</th>
+                          <th scope="col">Agregar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let persona of personas; let i = index">
+                          <th scope="row">{{persona.id}}</th>
+                          <td>{{persona.name}}</td>
+                          <td>{{persona.lastName}}</td>
+                          <td>{{persona.age}}</td>          
+                          <td><input value="{{persona.id}}" type="checkbox" name="pasajeros" ></td>
+                        </tr>       
+                      </tbody>
+                  </table>
+              </div>
+              <div *ngIf="formmodal" class="mb-3">
+                <label class="col-form-label">Listado de colectivos:</label>
+                <table  class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Patente</th>
+                          <th scope="col">colectivo Designado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let colectivo of colectivos; let i = index">
+                          <th scope="row">{{colectivo.id}}</th>
+                          <td>{{colectivo.patente}}</td>                          
+                          <td><input value="{{colectivo.id}}" type="radio" name="cole" [(ngModel)]="nuevoviaje.idColectivo" ></td>
+                        </tr>       
+                      </tbody>
+                  </table>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="validar()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+

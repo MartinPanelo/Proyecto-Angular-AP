@@ -1,0 +1,65 @@
+<div class="contenedor">
+  <div class="titulo">
+    <h1>Gestion de personas</h1>
+
+  </div>
+  <div class="agregarbtn">
+<button data-bs-toggle="modal" (click)="tipodemodal(-1)" data-bs-target="#exampleModal" type="button" class="btn btn-success">Agregar</button>
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Edad</th>
+          <th scope="col" colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of personas; let i = index">
+          <th scope="row">{{persona.id}}</th>
+          <td>{{persona.name}}</td>
+          <td>{{persona.lastName}}</td>
+          <td>{{persona.age}}</td>
+          <td><button data-bs-toggle="modal" (click)="tipodemodal(i)" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Editar</button></td>
+          <td><button (click)="borrarPersona(persona.id!)" type="button" class="btn btn-danger">Borrar</button></td>
+          <!-- <td><button type="button" class="btn btn-primary">Consultar</button></td> -->
+        </tr>       
+      </tbody>
+  </table>
+
+<div class="contenedor">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{titulo}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">        
+          <form>
+            <div class="mb-3">
+              <label for="name" class="col-form-label">Nombre:</label>
+              <input  type="text" class="form-control" id="name" [(ngModel)]="nuevapersona.name" name="name" required>
+            </div>
+           <div class="mb-3">
+              <label for="apellido" class="col-form-label">Apellido:</label>
+              <input  type="text" class="form-control" id="apellido" [(ngModel)]="nuevapersona.lastName" name="apellido" required>
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="col-form-label">Edad:</label>
+              <input  type="number" class="form-control" id="edad" [(ngModel)]="nuevapersona.age" name="edad" required>
+            </div> 
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="validar()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
