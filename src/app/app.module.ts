@@ -22,6 +22,7 @@ import { environment } from '../environments/environments';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     HomeComponent,
     PersonaComponent,
     ColectivosComponent,
-    ViajesComponent
+    ViajesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

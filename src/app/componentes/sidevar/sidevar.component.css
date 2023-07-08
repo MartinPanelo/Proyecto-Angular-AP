@@ -1,15 +1,14 @@
 .contenedor {
     width: 100%;
-    min-height: 400px;
+    min-height: 350px;
+/*     max-height:max-content  */
    /*  border: 1px solid rgba(0, 0, 0, 0.5); */
   }
   
   .sidenavContent {
-    /* display: flex; */
+
     width: 850px;
-   /*  height: 100%; */
-   /*  align-items: center;
-    justify-content: center; */
+
   }
   
   .sidenav {

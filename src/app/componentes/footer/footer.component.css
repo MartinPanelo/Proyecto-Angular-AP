@@ -1,0 +1,16 @@
+.pieDePagina {
+    background-image: linear-gradient( to bottom, rgba(255, 255, 255, 0), rgba(242, 241, 254, 1), rgba(221, 225, 254, 1), rgba(199, 212, 255, 1), rgba(173, 201, 255, 1) );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+/*     height: 120px; */
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.pieDePagina a {
+  text-decoration: none;
+  color: #2a7ae4;
+}
