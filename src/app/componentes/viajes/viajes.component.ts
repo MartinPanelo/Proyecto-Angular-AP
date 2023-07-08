@@ -24,6 +24,7 @@ export class ViajesComponent {
   viajes: viaje[] = [];
   nuevoviaje: viaje = new viaje('','',new Date(),new Date(),[],0);
   personas: persona[] = [];
+  listapasajeros: persona[] = [];
   colectivos:colectivo[] = [];  
   titulo: string = "";
  /*  id: number = 0; */
@@ -122,26 +123,69 @@ export class ViajesComponent {
 
 
   detalleviaje: viaje = new viaje('','',new Date(),new Date(),[],0);
-  mostrarViaje(IDviaje:number){
-
-  
-    
-  }
-
-
+  estilocard: Array<string> = ['colorCardUno', 'colorCardDos', 'colorCardTres'];
   onMouseEnter(id: number) {
     
     this.viajeService.BuscarPorID(id).subscribe(data => {
       
       this.detalleviaje = data;
-   
+     /*  this.listapasajeros */
 
     })
+    
+/*     this.detalleviaje.personaId.forEach((item) => {
+      
+      this.personas.forEach(element => {
+        
+        if(item == element.id){
+          this.listapasajeros.push(element);
+      }
+       
+      
+    })
+  })
+     */
     let divinfo = document.getElementById("divinfo");
+    divinfo!.classList.add(this.estilocard[Math.floor(Math.random() * this.estilocard.length)]);
     divinfo!.style.display = "block";
-  }
+   
+
+}
+
+
+
   onMouseLeave() {
     let divinfo = document.getElementById("divinfo");
     divinfo!.style.display = "none";
+    divinfo!.classList.forEach((clase) => {
+      if (clase.startsWith('colorCard')) {
+        divinfo!.classList.remove(clase); // Quitar las clases que comienza con "colorCard"
+      }    
+  });
   }
+
+
+  viaja(persona:persona):boolean{
+
+    this.detalleviaje.personaId.forEach((item) => {
+      console.log(item,persona.id);
+      if(item == persona.id){
+        return true;
+      }else{
+        return false;
+      }
+    })
+   
+    return false;
+   
+ 
+}
+
+
+
+borrarViaje(i: number): void {
+  this.viajeService.borrar(i).subscribe(() => {
+    this.cargarDatosProyecto();
+  });
+}
 }

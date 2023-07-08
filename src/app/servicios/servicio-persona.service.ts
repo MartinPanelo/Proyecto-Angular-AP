@@ -14,6 +14,9 @@ export class ServicioPersonaService {
   public getdato(): Observable<persona[]> {
     return this.http.get<persona[]>(this.apiUrl + 'personas');
   }
+  public BuscarPorID(id:number): Observable<any> {
+    return this.http.get(this.apiUrl + `personas/${id}`);
+  }
   public borrar(id:number): Observable<any> {
     return this.http.delete(this.apiUrl + `personas/${id}`);
   }

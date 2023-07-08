@@ -4,13 +4,26 @@
     right: 1%;
     width: 250px;
     height: auto;
-    background-color: rgba(120, 131, 132, 0.911);
-    border-radius: 20px;
+    border-radius: 38px;
+    
     z-index: 30;
     display: none;
 }
+.colorCardUno{
+    background: linear-gradient(116deg, #7DE2F8 0%, #15A3C1 100%);
+}
+.colorCardDos{
+    background: linear-gradient(116deg, #FAAB45 0%, #DB810B 100%);
+
+}
+.colorCardTres{
+    background: linear-gradient(116deg, #FE959A 0%, #F64F59 100%);
+}
+.colorCardCuatro{
+    background: linear-gradient(116deg, #a595fe 0%, #dd4ff6 100%);
+}
 .info{
-   padding: 15px;
+   padding: 25px;
 
 }
 .contenedor{

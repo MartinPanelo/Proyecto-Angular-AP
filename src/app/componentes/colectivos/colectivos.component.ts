@@ -43,8 +43,9 @@ export class ColectivosComponent implements OnInit{
   tipodemodal(opc:number): void {
     if(opc != -1){
       this.titulo = "Editar colectivo";
-      this.nuevocolectivo = Object.assign({}, this.colectivos[opc]);      
-      (<HTMLInputElement>document.getElementById("modelo")).value = this.nuevocolectivo.idModelo.toString();
+      this.nuevocolectivo = Object.assign({}, this.colectivos[opc]);
+       
+      (<HTMLInputElement>document.getElementById("modelo")).value = this.nuevocolectivo.modeloId.toString();
       /* this.id = this.personas[1].id; */
       
     }else{
@@ -73,6 +74,7 @@ export class ColectivosComponent implements OnInit{
     console.log(this.nuevocolectivo);
     this.nuevocolectivo.idModelo = Number((<HTMLInputElement>document.getElementById("modelo")).value),
     this.nuevocolectivo.modeloId = Number((<HTMLInputElement>document.getElementById("modelo")).value),
+    console.log(this.nuevocolectivo); 
     this.colectivoService.actualizar(this.nuevocolectivo).subscribe(() => {
       this.cargarDatosProyecto();
     })

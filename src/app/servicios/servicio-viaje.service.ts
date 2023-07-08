@@ -24,4 +24,7 @@ export class ServicioViajeService {
   public BuscarPorID(id:number): Observable<any> {
     return this.http.get(this.apiUrl + `viajes/${id}`);
   }
+  public borrar(id:number): Observable<any> {
+    return this.http.delete(this.apiUrl + `viajes/${id}`);
+  }
 }
