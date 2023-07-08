@@ -1,5 +1,18 @@
 # ProyectoFinal
 
+Angular
+Angular Material
+bootstrap
+firebase
+
+url : https://approyectoangular.web.app/home
+
+![image](https://github.com/MartinPanelo/Proyecto-Angular-AP/assets/95503065/a25b610c-db57-407c-8bb0-bfa8a36636c0)
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 
 ## Development server
